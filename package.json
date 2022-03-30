@@ -1,0 +1,28 @@
+{
+  "name": "pokedex",
+  "version": "1.0.0",
+  "description": "A guide of pokemons based on the API of https://pokeapi.co/",
+  "main": "index.js",
+  "scripts": {
+    "start": "http-server -c-1",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ekrzak/pokedex.git"
+  },
+  "keywords": [
+    "pokemon",
+    "pokedex",
+    "pokeapi"
+  ],
+  "author": "@ekrzak",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ekrzak/pokedex/issues"
+  },
+  "homepage": "https://github.com/ekrzak/pokedex#readme",
+  "devDependencies": {
+    "cypress": "^9.5.3"
+  }
+}
