@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "http-server -c-1",
+    "cypress-dev": "cypress open",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
