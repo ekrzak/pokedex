@@ -20,13 +20,7 @@ function renderPokemonsNames(pokemons) {
   nextTenPokemonsUrl = pokemons.next;
   previousTenPokemonsUrl = pokemons.previous;
 
-  if (previousTenPokemonsUrl === null) {
-    document.querySelector('#page-previous').parentElement.classList.add('disabled');
-    document.querySelector('#page-previous').classList.remove('text-danger');
-  } else {
-    document.querySelector('#page-previous').parentElement.classList.remove('disabled');
-    document.querySelector('#page-previous').classList.add('text-danger');
-  }
+  handleStatePaginationButtons(nextTenPokemonsUrl, previousTenPokemonsUrl);
 
   document.querySelectorAll('.rounded-pill').forEach(function(pokemonButton, index) {
     const pokemonId = pokemons.results[index].url.replace(/https:\/\/pokeapi\.co\/api\/v2\/pokemon\//, '').replace(/\//, '');
@@ -38,6 +32,24 @@ function renderPokemonsNames(pokemons) {
 
 function renderPokemonInfo() {
 
+}
+
+function handleStatePaginationButtons(nextPokemonsUrl, previousPokemonsUrl) {
+  if (previousPokemonsUrl === null) {
+    document.querySelector('#page-previous').parentElement.classList.add('disabled');
+    document.querySelector('#page-previous').classList.remove('text-danger');
+  } else {
+    document.querySelector('#page-previous').parentElement.classList.remove('disabled');
+    document.querySelector('#page-previous').classList.add('text-danger');
+  }
+  
+  if (nextPokemonsUrl === null) {
+    document.querySelector('#page-next').parentElement.classList.add('disabled');
+    document.querySelector('#page-next').classList.remove('text-danger');
+  } else {
+    document.querySelector('#page-next').parentElement.classList.remove('disabled');
+    document.querySelector('#page-next').classList.add('text-danger');
+  }
 }
 
 function handlePagination(event) {
