@@ -69,11 +69,17 @@
   <!-- Modal -->
   <div class="modal fade" id="pokemonModal" tabindex="-1" aria-labelledby="pokemonModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-      <div class="card mx-auto" style="width: 18rem;">
-        <img id="pokemon-img" src="https://images.unsplash.com/photo-1453728013993-6d66e9c9123a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80" class="card-img-top" alt="Alt text for image">
+      <div class="card mx-auto" style="width: 20rem;">
+        <img id="pokemon-img" src="./src/img/pokeball.png" class="card-img-top" alt="Image of a pokemon">
         <div class="card-body">
-          <h5 id="pokemon-title" class="card-title">Pokemon Name</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <h5 id="pokemon-title" class="card-title capitalize">Pokemon Name</h5>
+          <p class="card-text">
+            <strong>Type: </strong><span id="pokemon-type" class="capitalize"></span>
+            <br>
+            <strong>Height: </strong><span id="pokemon-height"></span> decimeter(s)
+            <br>
+            <strong>Weight: </strong><span id="pokemon-weight"></span> hectogram(s)
+          </p>
           <button type="button" class="btn btn-danger" style="pointer-events: auto;" data-bs-dismiss="modal">Back to Pokedex</button>
         </div>
       </div>
