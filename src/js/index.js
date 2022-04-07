@@ -1,19 +1,25 @@
 const $pageActions = document.querySelector('#page-actions');
+const $pokemonModal = document.querySelector('#pokemonModal');
 let nextTenPokemonsUrl = '';
 let previousTenPokemonsUrl;
 
 function searchPokemonsInApi(url) {
   return fetch(url)
-    .then(response => response.json());
+    .then(response => response.json())
+    .catch(e => console.error(e));
 }
 
 function searchFirstTenPokemons() {
   return fetch('https://pokeapi.co/api/v2/pokemon?offset=0&limit=10')
-    .then(response => response.json());
+    .then(response => response.json())
+    .catch(e => console.error(e));
 }
 
-function searchPokemonInfoInApi() {
-
+function searchPokemonInfoInApi(event) {
+  const pokeId = event.relatedTarget.textContent.replace(/\D+/g, '');
+  return fetch(`https://pokeapi.co/api/v2/pokemon/${pokeId}`)
+    .then(response => response.json())
+    .catch(e => console.error(e));
 }
 
 function renderPokemonsNames(pokemons) {
@@ -30,8 +36,16 @@ function renderPokemonsNames(pokemons) {
 
 }
 
-function renderPokemonInfo() {
-
+function renderPokemonInfo(pokemonInfo) {
+  const pokemonTypes = [];
+  document.querySelector('#pokemon-title').textContent = pokemonInfo.id + ". " + pokemonInfo.name;
+  document.querySelector('#pokemon-img').src = `${pokemonInfo.sprites['front_default']}`;
+  document.querySelector('#pokemon-height').textContent = pokemonInfo.height;
+  document.querySelector('#pokemon-weight').textContent = pokemonInfo.weight;
+  for (element of pokemonInfo.types) {
+    pokemonTypes.push(element.type.name);
+  }
+  document.querySelector('#pokemon-type').textContent = pokemonTypes.join('/');
 }
 
 function handleStatePaginationButtons(nextPokemonsUrl, previousPokemonsUrl) {
@@ -65,3 +79,6 @@ function handlePagination(event) {
 
 searchFirstTenPokemons().then(renderPokemonsNames);
 $pageActions.onclick = handlePagination;
+$pokemonModal.addEventListener('show.bs.modal', e => {
+  searchPokemonInfoInApi(e).then(renderPokemonInfo);
+});
